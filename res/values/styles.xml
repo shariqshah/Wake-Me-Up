@@ -17,14 +17,6 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         
     </style>
-    
-    <style name="backgroundMain" parent="AppTheme">
-          <item name="android:background">@drawable/bgtex</item>
-          <item name="android:layout_width">fill_parent</item>
-          <item name="android:layout_height">fill_parent</item>
-          
-    </style>
-    
    
 
 </resources>
