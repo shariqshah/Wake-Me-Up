@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wake Me Up</string>
+    <string name="action_settings">Settings</string>
+    <color name="backgroundCol">#2E3436</color>
+    <color name="fontMainCol">#ffffff</color>
+    
+
+</resources>
