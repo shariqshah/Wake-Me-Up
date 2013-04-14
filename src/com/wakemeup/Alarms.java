@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class Alarms extends Activity {
+public class Alarms extends CustomWindow {
 	
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarms);
+        
+        //this.title.setText("Add New");
+        this.icon.setImageResource(R.drawable.add_icon);
         
         
     }
