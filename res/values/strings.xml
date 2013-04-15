@@ -5,6 +5,15 @@
     <string name="action_settings">Settings</string>
     <color name="backgroundCol">#2E3436</color>
     <color name="fontMainCol">#ffffff</color>
+    <string-array name="days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
     
     
 
