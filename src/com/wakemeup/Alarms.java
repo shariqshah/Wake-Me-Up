@@ -23,6 +23,7 @@ public class Alarms extends CustomWindow {
 	ArrayList<String>daysSelected=new ArrayList();
 	Resources res;
 	String[] days;
+	int counter=1;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,29 @@ public class Alarms extends CustomWindow {
 		@Override
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			
-			daysPickerDialog();
+			
+			//Fix for android jelly bean bug with OnTimeSetListener being called twice. First check for OS version, if jelly bean then apply fix.
+			//If counter value is 1, call the date picker dialog else don't call
+			//and set the value back to 1 for the next time.
+			int currentApiVersion=android.os.Build.VERSION.SDK_INT;
+			if(currentApiVersion==17)
+			{
+				if(counter==1)
+				{
+					counter++;
+					daysPickerDialog();
+				}
+				else if(counter==2)
+				{
+					counter=1;
+				}
+			}
+			else
+			{
+				daysPickerDialog();
+			}
+			
+			
 		}
 	};
 	
@@ -88,6 +111,7 @@ public class Alarms extends CustomWindow {
 				{
 					//If none of the days were selected show error. User must select atleast one.
 					Toast.makeText(getApplicationContext(), "Must select atleast one day", Toast.LENGTH_SHORT).show();
+					daysPickerDialog();
 				}
 				else
 				{
