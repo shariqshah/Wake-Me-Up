@@ -1,6 +1,7 @@
 package com.wakemeup;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
@@ -24,5 +25,10 @@ public class CustomWindow extends Activity{
 		
 		title=(TextView) findViewById(R.id.title);
 		icon=(ImageView) findViewById(R.id.icon);
+	}
+
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
