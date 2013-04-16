@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.wakemeup.Alarms" android:label="Alarms"></activity>
+        <activity android:name="com.wakemeup.AlarmList" android:label="Alarms"></activity>
     </application>
 
 </manifest>
