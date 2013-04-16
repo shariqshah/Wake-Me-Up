@@ -4,7 +4,10 @@
     android:layout_height="wrap_content"
     android:background="@color/backgroundCol"
     android:orientation="horizontal"
-    android:padding="15dip" >
+    android:paddingTop="10dip"
+    android:paddingLeft="5dip"
+    android:paddingBottom="5dip"
+    android:paddingRight="5dip" >
     
     
     <!-- Alarm Time -->
@@ -36,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:background="@drawable/buttontgl"
         android:textOn=""
         android:textOff=""
          />
