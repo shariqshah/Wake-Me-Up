@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    
+    <TextView 
+        android:id="@+id/alarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_centerInParent="true"
+        android:paddingBottom="10dip"
+        android:text="Press the button and Wake the Frak Up!"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/fontMainCol" />
+    
+    
+    <Button 
+        android:id="@+id/stopAlarmBut"
+        android:layout_height="50dip"
+        android:layout_width="100dip"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/alarmText" 
+        android:background="@drawable/round"
+        android:text="Stop Alarm"
+        android:textColor="@color/fontMainCol" />
+    
+
+</RelativeLayout>

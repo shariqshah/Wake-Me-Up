@@ -2,11 +2,15 @@ package com.wakemeup;
 
 import android.os.Bundle;
 
+import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.Menu;
@@ -89,7 +93,7 @@ public class AlarmList extends CustomWindow {
 			//If counter value is 1, call the date picker dialog else don't call
 			//and set the value back to 1 for the next time.
 			int currentApiVersion=android.os.Build.VERSION.SDK_INT;
-			if(currentApiVersion==17)
+			if(currentApiVersion>=16)
 			{
 				if(counter==1)
 				{
@@ -157,6 +161,7 @@ public class AlarmList extends CustomWindow {
 				else
 				{
 					//Proceed with saving the alarm and setting it
+					setAlarm(alarmHour, alarmMinute);
 					Alarm tempAlarm=new Alarm();
 					tempAlarm.setAlarm(alarmHour, alarmMinute, daysSelected,true);
 					alarms.add(tempAlarm);
@@ -273,6 +278,21 @@ public class AlarmList extends CustomWindow {
 		{
 			Log.d("Deserialization", e.toString());
 		}
+	}
+	
+	void setAlarm(int alarmHour,int alarmMinute)
+	{
+		Calendar alarmTime=Calendar.getInstance();
+		alarmTime.set(Calendar.HOUR, alarmHour);
+		alarmTime.set(Calendar.MINUTE, alarmMinute);
+		alarmTime.set(Calendar.SECOND, 0);
+		
+		
+		Intent intent=new Intent(this,AlarmRecieverActivity.class);
+		PendingIntent pendingIntent=PendingIntent.getActivity(this, alarmCount, intent,PendingIntent.FLAG_CANCEL_CURRENT);
+		
+		AlarmManager alarmManager=(AlarmManager)getSystemService(Activity.ALARM_SERVICE);
+		alarmManager.set(AlarmManager.RTC_WAKEUP,alarmTime.getTimeInMillis(),pendingIntent);
 	}
 
 }
