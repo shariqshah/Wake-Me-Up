@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundCol"
+    android:orientation="horizontal"
+    android:padding="15dip" >
+    
+    
+    <!-- Alarm Time -->
+    <TextView 
+        android:id="@+id/alarmTime"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/fontMainCol"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Test" />
+    
+    
+    <!-- Alarm Days -->
+    <TextView
+        android:id="@+id/alarmDays"
+        android:layout_below="@id/alarmTime"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textSize="15sp"
+        android:textColor="@color/fontSecCol"
+        android:text="Test" />
+    
+    <!-- Alarm Toggle -->
+    <ToggleButton 
+        android:id="@+id/alarmToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textOn=""
+        android:textOff=""
+         />
+    
+</RelativeLayout>
