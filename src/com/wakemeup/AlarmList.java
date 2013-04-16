@@ -34,13 +34,13 @@ import java.util.Calendar;
 public class AlarmList extends CustomWindow {
 	
 	Calendar dateTime=Calendar.getInstance();
-	ArrayList<String>daysSelected=new ArrayList<String>();
+	//ArrayList<String>daysSelected=new ArrayList<String>();
 	Resources res;
 	String[] days;
 	int counter=1;
 	private ListView alarmList;
 	AlarmAdapter adapter;
-	ArrayList <Alarm> alarms=new ArrayList<Alarm>();
+	static final ArrayList <Alarm> alarms=new ArrayList<Alarm>();
 	int alarmCount=0;
 	int alarmHour;
 	int alarmMinute;
@@ -118,6 +118,13 @@ public class AlarmList extends CustomWindow {
 	
 	public void daysPickerDialog()
 	{
+		final ArrayList<String>daysSelected=new ArrayList<String>();
+		//daysSelected.clear();
+		if(daysSelected.isEmpty())
+		{
+			Log.d("Days List", "It is empty indeed!");
+		}
+		
 		AlertDialog.Builder builder=new AlertDialog.Builder(this);
 		builder.setTitle("Select Days");
 		
@@ -155,7 +162,7 @@ public class AlarmList extends CustomWindow {
 					alarms.add(tempAlarm);
 					alarmCount++;
 					adapter.notifyDataSetChanged();
-					daysSelected.clear();
+					//daysSelected.clear();
 					//alarmList.invalidateViews();
 					//alarmList.refreshDrawableState();
 					//TODO Call serialization code here

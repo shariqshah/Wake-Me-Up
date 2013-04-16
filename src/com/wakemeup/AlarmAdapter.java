@@ -3,6 +3,7 @@ package com.wakemeup;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,20 +54,30 @@ public class AlarmAdapter extends ArrayAdapter<Alarm> {
 	    alarmTime.setText(alarmTimeString);
 	    
 	    //Get Number of days from arraylist into a string and set value
-	    String alarmDaysString = null;
+	    String alarmDaysString = "";
 	    for(int i=0; i<alarm.alarmDays.size();i++)
 	    {
+	    	
 	    	if(i==(alarm.alarmDays.size()-1))
 	    	{
 	    		//Don't place comma for final value
-	    		alarmDaysString+=alarm.alarmDays.get(i);
+	    		alarmDaysString+=alarm.alarmDays.get(i).substring(0, 3);
 	    	}
 	    	else
 	    	{
-	    		alarmDaysString+=alarm.alarmDays.get(i)+", ";
+	    		alarmDaysString+=alarm.alarmDays.get(i).substring(0, 3)+", ";
 	    	}
 	    	
 	    }
+	    if(alarmDaysString.equals(""))
+	    {
+	    	Log.d("Days String", "alarmDaysString is EMPTY");
+	    }
+	    else
+	    {
+	    	Log.d("Days String", alarmDaysString);
+	    }
+	    
 	    alarmDays.setText(alarmDaysString);
 	    
 	    //Set Toggle Button status
