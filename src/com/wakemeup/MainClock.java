@@ -27,7 +27,7 @@ public class MainClock extends CustomWindow {
 			public void onClick(View arg0) {
 				
 				Intent i=new Intent();
-				i.setClass(MainClock.this,Alarms.class);
+				i.setClass(MainClock.this,AlarmList.class);
 				startActivity(i);
 				
 			}

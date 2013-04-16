@@ -16,6 +16,7 @@ public final class R {
     public static final class color {
         public static final int backgroundCol=0x7f060001;
         public static final int fontMainCol=0x7f060002;
+        public static final int fontSecCol=0x7f060003;
         public static final int titleBgCol=0x7f060000;
     }
     public static final class dimen {
@@ -31,27 +32,38 @@ public final class R {
     public static final class drawable {
         public static final int add_icon=0x7f020000;
         public static final int alarmclock_bg=0x7f020001;
-        public static final int app_icon=0x7f020002;
-        public static final int app_icon_hdpi=0x7f020003;
-        public static final int app_icon_mdpi=0x7f020004;
-        public static final int app_icon_xhdpi=0x7f020005;
-        public static final int bgtex=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int round=0x7f020008;
+        public static final int alarmclock_bg_new=0x7f020002;
+        public static final int alarmclock_bg_new2=0x7f020003;
+        public static final int app_icon=0x7f020004;
+        public static final int app_icon_hdpi=0x7f020005;
+        public static final int app_icon_mdpi=0x7f020006;
+        public static final int app_icon_xhdpi=0x7f020007;
+        public static final int bgtex=0x7f020008;
+        public static final int button_toggle_bg=0x7f020009;
+        public static final int buttontgl=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int round=0x7f02000c;
+        public static final int toggle_off=0x7f02000d;
+        public static final int toggle_on=0x7f02000e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0006;
-        public static final int alarms=0x7f0a0001;
-        public static final int header=0x7f0a0002;
-        public static final int header_text=0x7f0a0003;
-        public static final int icon=0x7f0a0005;
-        public static final int mainClock=0x7f0a0000;
-        public static final int title=0x7f0a0004;
+        public static final int action_settings=0x7f0a000a;
+        public static final int alarmDays=0x7f0a0004;
+        public static final int alarmList=0x7f0a0000;
+        public static final int alarmTime=0x7f0a0003;
+        public static final int alarmToggle=0x7f0a0005;
+        public static final int alarms=0x7f0a0002;
+        public static final int header=0x7f0a0006;
+        public static final int header_text=0x7f0a0007;
+        public static final int icon=0x7f0a0009;
+        public static final int mainClock=0x7f0a0001;
+        public static final int title=0x7f0a0008;
     }
     public static final class layout {
         public static final int activity_alarms=0x7f030000;
         public static final int activity_main_clock=0x7f030001;
-        public static final int window_title=0x7f030002;
+        public static final int alarm_list_row=0x7f030002;
+        public static final int window_title=0x7f030003;
     }
     public static final class menu {
         public static final int main_clock=0x7f090000;
@@ -82,13 +94,14 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f040003;
+        public static final int AppBaseTheme=0x7f040004;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f040004;
-        public static final int CustomTheme=0x7f040002;
+        public static final int AppTheme=0x7f040005;
+        public static final int CustomTheme=0x7f040003;
         public static final int CustomWindowTitleBackground=0x7f040001;
+        public static final int Widget_Button_Toggle=0x7f040002;
         public static final int backgroundMain=0x7f040000;
     }
 }
