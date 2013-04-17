@@ -47,19 +47,20 @@ public final class R {
         public static final int toggle_on=0x7f02000e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000c;
+        public static final int Clock=0x7f0a0006;
+        public static final int action_settings=0x7f0a000d;
         public static final int alarmDays=0x7f0a0004;
         public static final int alarmList=0x7f0a0000;
-        public static final int alarmText=0x7f0a0006;
+        public static final int alarmText=0x7f0a0007;
         public static final int alarmTime=0x7f0a0003;
         public static final int alarmToggle=0x7f0a0005;
         public static final int alarms=0x7f0a0002;
-        public static final int header=0x7f0a0008;
-        public static final int header_text=0x7f0a0009;
-        public static final int icon=0x7f0a000b;
+        public static final int header=0x7f0a0009;
+        public static final int header_text=0x7f0a000a;
+        public static final int icon=0x7f0a000c;
         public static final int mainClock=0x7f0a0001;
-        public static final int stopAlarmBut=0x7f0a0007;
-        public static final int title=0x7f0a000a;
+        public static final int stopAlarmBut=0x7f0a0008;
+        public static final int title=0x7f0a000b;
     }
     public static final class layout {
         public static final int activity_alarms=0x7f030000;

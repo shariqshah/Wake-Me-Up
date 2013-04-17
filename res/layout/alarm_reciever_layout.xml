@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/backgroundMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-    
+    <DigitalClock 
+        android:id="@+id/Clock"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingBottom="20dip"
+        android:textColor="@color/fontMainCol"
+        android:textStyle="bold"
+        android:textSize="50dip"
+        android:textAlignment="center" />
     <TextView 
         android:id="@+id/alarmText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
         android:layout_centerInParent="true"
+        android:layout_below="@id/Clock"
         android:paddingBottom="10dip"
         android:text="Press the button and Wake the Frak Up!"
         android:textAlignment="center"
