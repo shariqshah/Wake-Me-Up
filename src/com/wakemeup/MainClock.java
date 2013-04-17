@@ -14,11 +14,11 @@ public class MainClock extends CustomWindow {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        //requestWindowFeature(Window.FEATURE_CUSTOM_TITLE); // Related to custom titlebar
-        
-        //setContentView(R.layout.activity_main_clock);
-        
-        //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.window_title); // Related to custom titlebar
+//        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE); // Related to custom titlebar
+//        
+//        setContentView(R.layout.activity_main_clock);
+//        
+//        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.window_title); // Related to custom titlebar
         Button alarms=(Button)findViewById(R.id.alarms);
         
         alarms.setOnClickListener(new View.OnClickListener() {
