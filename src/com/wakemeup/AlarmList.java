@@ -283,7 +283,7 @@ public class AlarmList extends CustomWindow {
 	void setAlarm(int alarmHour,int alarmMinute)
 	{
 		Calendar alarmTime=Calendar.getInstance();
-		alarmTime.set(Calendar.HOUR, alarmHour);
+		alarmTime.set(Calendar.HOUR_OF_DAY, alarmHour);
 		alarmTime.set(Calendar.MINUTE, alarmMinute);
 		alarmTime.set(Calendar.SECOND, 0);
 		
