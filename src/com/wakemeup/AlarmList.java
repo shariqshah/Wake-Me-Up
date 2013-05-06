@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
@@ -45,9 +46,14 @@ public class AlarmList extends CustomWindow {
 	private ListView alarmList;
 	AlarmAdapter adapter;
 	static final ArrayList <Alarm> alarms=new ArrayList<Alarm>();
-	int alarmCount=0;
-	int alarmHour;
-	int alarmMinute;
+	private int alarmCount=0;
+	private int alarmHour;
+	private int alarmMinute;
+	private int optionSelected=-1;
+	private static int[] RETURN_CODES={0,1};
+	private static int REQUEST_CODE_CUSTOM=1;
+	private static int REQUEST_CODE_MATH=1;
+	private ArrayList<String>daysSelected=new ArrayList<String>();
 	
 	
 	@Override
@@ -65,6 +71,7 @@ public class AlarmList extends CustomWindow {
 			
 			@Override
 			public void onClick(View v) {
+				dateTime=Calendar.getInstance();
 				Log.d("Add Alarm", "Add alarm imageview was clicked!");
 				new TimePickerDialog(v.getContext(), tListener, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
 				
@@ -122,7 +129,7 @@ public class AlarmList extends CustomWindow {
 	
 	public void daysPickerDialog()
 	{
-		final ArrayList<String>daysSelected=new ArrayList<String>();
+		 
 		//daysSelected.clear();
 		if(daysSelected.isEmpty())
 		{
@@ -161,16 +168,7 @@ public class AlarmList extends CustomWindow {
 				else
 				{
 					//Proceed with saving the alarm and setting it
-					setAlarm(alarmHour, alarmMinute);
-					Alarm tempAlarm=new Alarm();
-					tempAlarm.setAlarm(alarmHour, alarmMinute, daysSelected,true);
-					alarms.add(tempAlarm);
-					alarmCount++;
-					adapter.notifyDataSetChanged();
-					//daysSelected.clear();
-					//alarmList.invalidateViews();
-					//alarmList.refreshDrawableState();
-					//TODO Call serialization code here
+					alarmOptionsDialog();
 				}
 				
 			}
@@ -201,7 +199,63 @@ public class AlarmList extends CustomWindow {
 		//Log.d("Dialog", "DialogBox has been shown!");
 	}
 
-
+	public void alarmOptionsDialog()
+	{
+		AlertDialog.Builder builder=new Builder(this);
+		final CharSequence[] options={"None","Math Questions","Custom Questions"};
+		
+		
+		builder.setTitle("Extra Options");
+		builder.setSingleChoiceItems(options, -1,new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				if(options[which].equals("None"))
+				{
+					optionSelected=0;
+				}
+				else if(options[which].equals("Math Questions"))
+				{
+					optionSelected=1;
+				}
+				else if(options[which].equals("Custom Questions"))
+				{
+					optionSelected=2;
+				}
+				
+			}
+		});
+		
+		builder.setPositiveButton("Select", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				switch(optionSelected)
+				{
+				case 0:
+					//Set Normal Alarm.
+					setAlarmCaller();
+					break;
+				case 1:
+					//Set Alarm with Math question Option.
+					setAlarmCaller();
+					break;
+				case 2:
+					Intent in=new Intent();
+					in.setClass(AlarmList.this, QuestionForm.class);
+					int alarmID=(int)System.currentTimeMillis();
+					in.putExtra("alarmID", alarmID); 
+					startActivityForResult(in, REQUEST_CODE_CUSTOM);
+					
+					break;
+				}
+			}
+		});
+		
+		builder.show();
+	}
 
 	void saveAlarms()
 	{
@@ -280,21 +334,111 @@ public class AlarmList extends CustomWindow {
 		}
 	}
 	
-	void setAlarm(int alarmHour,int alarmMinute)
+	void setAlarm(String day)
 	{
+		Log.d("DAY ",day);
 		Calendar alarmTime=Calendar.getInstance();
 		alarmTime.set(Calendar.HOUR_OF_DAY, alarmHour);
 		alarmTime.set(Calendar.MINUTE, alarmMinute);
 		alarmTime.set(Calendar.SECOND, 0);
+		alarmTime.set(Calendar.DAY_OF_WEEK, getDay(day));
 		
+		int alarmID=(int)System.currentTimeMillis();
 		
 		Intent intent=new Intent(this,AlarmRecieverActivity.class);
-		PendingIntent pendingIntent=PendingIntent.getActivity(this, alarmCount, intent,PendingIntent.FLAG_CANCEL_CURRENT);
+		intent.putExtra("alarmID", alarmID);
+		intent.putExtra("alarmOption", optionSelected);
+		PendingIntent pendingIntent=PendingIntent.getActivity(this, alarmID, intent,PendingIntent.FLAG_ONE_SHOT);
+		
 		
 		AlarmManager alarmManager=(AlarmManager)getSystemService(Activity.ALARM_SERVICE);
-		alarmManager.set(AlarmManager.RTC_WAKEUP,alarmTime.getTimeInMillis(),pendingIntent);
+		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), alarmManager.INTERVAL_DAY * 7, pendingIntent);
+	}
+	
+	//Returns the integer corresponding to the day of week in the string parameter
+	int getDay(String day)
+	{
+		if(day.equals(days[0]))
+		{
+			return Calendar.MONDAY;
+		}
+		else if(day.equals(days[1]))
+		{
+			return Calendar.TUESDAY;
+		}
+		else if(day.equals(days[2]))
+		{
+			return Calendar.WEDNESDAY;
+		}
+		else if(day.equals(days[3]))
+		{
+			return Calendar.THURSDAY;
+		}
+		else if(day.equals(days[4]))
+		{
+			return Calendar.FRIDAY;
+		}
+		else if(day.equals(days[5]))
+		{
+			return Calendar.SATURDAY;
+		}
+		else if(day.equals(days[6]))
+		{
+			return Calendar.SUNDAY;
+		}
+		else
+		{
+			throw new RuntimeException("Invalid day specified!");
+		}
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode,int resultCode,Intent Data)
+	{
+		if(requestCode==REQUEST_CODE_CUSTOM)
+		{
+			switch (resultCode)
+			{
+			case 0:
+				//User Pressed Cancel
+				Toast.makeText(getApplicationContext(), "Alarm not set!", Toast.LENGTH_SHORT).show();
+				resetVariables();
+				break;
+			case 1:
+				Toast.makeText(getApplicationContext(), "Alarm set!", Toast.LENGTH_SHORT).show();
+				setAlarmCaller();
+				break;
+			};
+		}
+	}
+	
+	void setAlarmCaller()
+	{
+		for(int i=0;i<daysSelected.size();i++)
+		{
+			setAlarm(daysSelected.get(i));
+			alarmCount++;
+		}
+		
+		Alarm tempAlarm=new Alarm();
+		tempAlarm.setAlarm(alarmHour, alarmMinute, daysSelected,true);
+		alarms.add(tempAlarm);
+		adapter.notifyDataSetChanged();
+		resetVariables();
+		//daysSelected.clear();
+		//alarmList.invalidateViews();
+		//alarmList.refreshDrawableState();
+		//TODO Call serialization code here
+	}
+	
+	void resetVariables()
+	{
+		alarmHour=-1;
+		alarmMinute=-1;
+		daysSelected.clear();
+		optionSelected=-1;
+		//adapter.notifyDataSetChanged();
+	}
 }
 
 

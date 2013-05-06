@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -15,11 +16,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class AlarmRecieverActivity extends Activity {
 	
 	private MediaPlayer mediaPlayer;
 	private PowerManager.WakeLock wakeLock;
+	private static int REQUEST_CODE_MATH=1;
+	private static int REQUEST_CODE_CUSTOM=2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +50,30 @@ public class AlarmRecieverActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				//Stop Alarm and close the activity
-				mediaPlayer.stop();
-				finish();
+				int alarmOption=getIntent().getIntExtra("alarmOption", -1);
+				
+				if(alarmOption==0)
+				{
+					//Stop Alarm and close the activity
+					mediaPlayer.stop();
+					finish();
+				}
+				else if(alarmOption==1)
+				{
+					//Math Question
+					Intent in=new Intent();
+					in.setClass(AlarmRecieverActivity.this,MathQuestions.class );
+					startActivityForResult(in, REQUEST_CODE_MATH);
+				}
+				else if(alarmOption==2)
+				{
+					Intent in=new Intent();
+					int alarmID=getIntent().getIntExtra("alarmID", 0);
+					in.putExtra("alarmID",alarmID);
+					in.setClass(AlarmRecieverActivity.this,CustomQuestion.class );
+					startActivityForResult(in, REQUEST_CODE_CUSTOM);
+				}
+				
 				
 			}
 		});
@@ -108,5 +133,32 @@ public class AlarmRecieverActivity extends Activity {
 		
 		return tone;
 	}
-
+	
+	@Override
+	protected void onActivityResult(int requestCode,int resultCode,Intent resultIntent)
+	{
+		if(requestCode==REQUEST_CODE_MATH)
+		{
+			if(resultCode==1)
+			{
+				mediaPlayer.stop();
+				finish();
+			}
+		}
+		else if(requestCode==REQUEST_CODE_CUSTOM)
+		{
+			if(resultCode==1)
+			{
+				mediaPlayer.stop();
+				finish();
+			}
+		}
+	}
+	
+	@Override
+	public void onBackPressed()
+	{
+		//Do Nothing!
+		//TODO Find a better way to handle this.
+	} 
 }

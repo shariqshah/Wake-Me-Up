@@ -8,13 +8,13 @@
         android:minSdkVersion="10"
         android:targetSdkVersion="17" />
 
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_icon_hdpi"
         android:label="@string/app_name"
-        android:theme="@style/CustomTheme">
+        android:theme="@style/CustomTheme" >
         <activity
             android:name="com.wakemeup.MainClock"
             android:label="@string/app_name" >
@@ -24,10 +24,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.wakemeup.AlarmList" android:label="Alarms"></activity>
-        <activity android:name="com.wakemeup.AlarmRecieverActivity"></activity>
+        <activity
+            android:name="com.wakemeup.AlarmList"
+            android:label="Alarms" >
+        </activity>
+        <activity android:name="com.wakemeup.AlarmRecieverActivity" >
+        </activity>
+        <activity
+            android:name="com.wakemeup.QuestionForm"
+            android:label="@string/title_activity_question_form" >
+        </activity>
+        <activity
+            android:name="com.wakemeup.MathQuestions"
+            android:label="@string/title_activity_math_questions" >
+        </activity>
+        <activity
+            android:name="com.wakemeup.CustomQuestion"
+            android:label="@string/title_activity_custom_question" >
+        </activity>
     </application>
-    
-    
 
 </manifest>

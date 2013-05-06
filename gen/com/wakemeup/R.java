@@ -47,34 +47,63 @@ public final class R {
         public static final int toggle_on=0x7f02000e;
     }
     public static final class id {
-        public static final int Clock=0x7f0a0006;
-        public static final int action_settings=0x7f0a000d;
-        public static final int alarmDays=0x7f0a0004;
+        public static final int Clock=0x7f0a0017;
+        public static final int action_settings=0x7f0a001e;
+        public static final int alarmDays=0x7f0a0015;
         public static final int alarmList=0x7f0a0000;
-        public static final int alarmText=0x7f0a0007;
-        public static final int alarmTime=0x7f0a0003;
-        public static final int alarmToggle=0x7f0a0005;
-        public static final int alarms=0x7f0a0002;
-        public static final int header=0x7f0a0009;
-        public static final int header_text=0x7f0a000a;
-        public static final int icon=0x7f0a000c;
-        public static final int mainClock=0x7f0a0001;
-        public static final int stopAlarmBut=0x7f0a0008;
-        public static final int title=0x7f0a000b;
+        public static final int alarmText=0x7f0a0018;
+        public static final int alarmTime=0x7f0a0014;
+        public static final int alarmToggle=0x7f0a0016;
+        public static final int alarms=0x7f0a0005;
+        public static final int answerCQ=0x7f0a0002;
+        public static final int answerLab=0x7f0a000e;
+        public static final int answerText=0x7f0a000f;
+        public static final int answerTextMQ=0x7f0a0009;
+        public static final int buttons=0x7f0a0010;
+        public static final int cancelQuestionBut=0x7f0a0011;
+        public static final int doneQuestionBut=0x7f0a0013;
+        public static final int header=0x7f0a001a;
+        public static final int header_text=0x7f0a001b;
+        public static final int icon=0x7f0a001d;
+        public static final int mainClock=0x7f0a0004;
+        public static final int nextQuestionBut=0x7f0a0012;
+        public static final int number1=0x7f0a0006;
+        public static final int number2=0x7f0a0008;
+        public static final int operator=0x7f0a0007;
+        public static final int questionCQ=0x7f0a0001;
+        public static final int questionForm=0x7f0a000b;
+        public static final int questionLab=0x7f0a000c;
+        public static final int questionText=0x7f0a000d;
+        public static final int stopAlarmBut=0x7f0a0019;
+        public static final int stopAlarmCQ=0x7f0a0003;
+        public static final int stopAlarmMQ=0x7f0a000a;
+        public static final int title=0x7f0a001c;
     }
     public static final class layout {
         public static final int activity_alarms=0x7f030000;
-        public static final int activity_main_clock=0x7f030001;
-        public static final int alarm_list_row=0x7f030002;
-        public static final int alarm_reciever_layout=0x7f030003;
-        public static final int window_title=0x7f030004;
+        public static final int activity_custom_question=0x7f030001;
+        public static final int activity_main_clock=0x7f030002;
+        public static final int activity_math_questions=0x7f030003;
+        public static final int activity_question_form=0x7f030004;
+        public static final int alarm_list_row=0x7f030005;
+        public static final int alarm_reciever_layout=0x7f030006;
+        public static final int window_title=0x7f030007;
     }
     public static final class menu {
-        public static final int main_clock=0x7f090000;
+        public static final int custom_question=0x7f090000;
+        public static final int main_clock=0x7f090001;
+        public static final int math_questions=0x7f090002;
+        public static final int question_form=0x7f090003;
     }
     public static final class string {
         public static final int action_settings=0x7f070001;
+        public static final int answer=0x7f070004;
         public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070006;
+        public static final int question=0x7f070003;
+        public static final int title_activity_custom_question=0x7f070007;
+        public static final int title_activity_math_questions=0x7f070005;
+        public static final int title_activity_question_form=0x7f070002;
     }
     public static final class style {
         /** 
