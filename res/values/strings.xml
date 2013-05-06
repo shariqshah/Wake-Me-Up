@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="titleBgCol">#292E2F</color><string name="app_name">Wake Me Up</string>
+    <color name="titleBgCol">#292E2F</color>
+
+    <string name="app_name">Wake Me Up</string>
     <string name="action_settings">Settings</string>
+
     <color name="backgroundCol">#292E2F</color>
     <color name="fontMainCol">#ffffff</color>
     <color name="fontSecCol">#B7B7B7</color>
+
     <string-array name="days">
         <item>Monday</item>
         <item>Tuesday</item>
@@ -15,7 +19,12 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
-    
-    
+
+    <string name="title_activity_question_form">QuestionForm</string>
+    <string name="question">Question to ask :</string>
+    <string name="answer">Answer :</string>
+    <string name="title_activity_math_questions">MathQuestions</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_custom_question">CustomQuestion</string>
 
 </resources>
