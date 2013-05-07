@@ -28,7 +28,7 @@ public class CustomWindow extends Activity{
 	}
 
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 }

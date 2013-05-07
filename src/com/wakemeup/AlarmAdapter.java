@@ -72,10 +72,12 @@ public class AlarmAdapter extends ArrayAdapter<Alarm> {
 	    if(alarmDaysString.equals(""))
 	    {
 	    	Log.d("Days String", "alarmDaysString is EMPTY");
+	    	Log.d("Days List Size",String.valueOf(alarm.alarmDays.size()));
 	    }
 	    else
 	    {
 	    	Log.d("Days String", alarmDaysString);
+	    	Log.d("Days List Size",String.valueOf(alarm.alarmDays.size()));
 	    }
 	    
 	    alarmDays.setText(alarmDaysString);
