@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundMain"
+     >
+
+
+    
+        
+        <TextView
+	        android:id="@+id/questionCQ"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/question"
+	        android:layout_alignParentLeft="true"
+	        android:padding="10dip" />
+	    
+	    <EditText 
+	        android:id="@+id/answerCQ"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:hint="Answer..."
+	        android:padding="10dip"
+	        android:layout_below="@id/questionCQ"
+	        android:background="@color/titleBgCol"
+	        android:textColor="@color/fontMainCol" />
+  
+    
+	  <RelativeLayout 
+	      android:layout_below="@id/answerCQ"
+	      android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:padding="10dip">
+	      
+	      <Button
+            android:id="@+id/stopAlarmCQ"
+	        android:layout_width="120dip"
+       		android:layout_height="40dip"
+	        android:background="@drawable/round"
+	        android:textColor="@color/fontMainCol"
+	        android:text="Stop Alarm"
+	        android:padding="6dip"
+	        android:layout_centerHorizontal="true" />
+	      
+	  </RelativeLayout>
+          
+          
+        
+</RelativeLayout>
+
+
+      
+      
+      
+    

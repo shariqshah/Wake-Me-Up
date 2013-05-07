@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundMain"
+     >
+
+
+    <RelativeLayout 
+        android:id="@+id/questionForm"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding="5dip" >
+        
+        <TextView
+	        android:id="@+id/questionLab"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/question"
+	        android:layout_alignParentLeft="true"
+	        android:padding="3dip" />
+	    
+	    <EditText 
+	        android:id="@+id/questionText"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:hint="What to ask"
+	        android:padding="3dip"
+	        android:layout_below="@id/questionLab"
+	        android:background="@color/titleBgCol"
+	        android:textColor="@color/fontMainCol" />
+	    
+	    <TextView 
+	        android:id="@+id/answerLab"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/questionText"
+	        android:padding="3dip"
+	        android:layout_alignParentLeft="true"
+	        android:text="@string/answer" />
+	    
+	    <EditText 
+	        android:id="@+id/answerText"
+	        android:layout_width="fill_parent"
+	        android:layout_height="150dip"
+	        android:hint="Answer......."
+	        android:padding="3dip"
+	        android:layout_below="@id/answerLab"
+	        android:background="@color/titleBgCol"
+	        android:textColor="@color/fontMainCol" />
+	    
+        
+    </RelativeLayout>
+  
+    
+      <RelativeLayout 
+        android:id="@+id/buttons"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/questionForm"
+        android:padding="5dip"
+         >
+	  
+          <Button
+            android:id="@+id/cancelQuestionBut"
+	        android:layout_width="120dip"
+       		android:layout_height="40dip"
+	        android:background="@drawable/round"
+	        android:textColor="@color/fontMainCol"
+	        android:layout_alignParentLeft="true"
+	        android:text="Cancel"
+	        android:padding="3dip" />
+          
+          
+          
+          <Button
+            android:id="@+id/nextQuestionBut"
+			android:layout_width="120dip"
+       		android:layout_height="40dip"
+	        android:background="@drawable/round"
+	        android:textColor="@color/fontMainCol"        
+	        android:layout_alignParentRight="true"
+	        android:text="Next Question"
+	        android:padding="3dip" />
+          
+          
+          
+      </RelativeLayout>
+      
+      <Button
+            android:id="@+id/doneQuestionBut"
+	        android:layout_width="120dip"
+       		android:layout_height="40dip"
+	        android:background="@drawable/round"
+	        android:textColor="@color/fontMainCol"
+	        android:text="Done"
+	        android:padding="10dip"
+	        android:layout_below="@id/buttons"
+	        android:layout_centerHorizontal="true" />
+          
+        
+</RelativeLayout>
+
+
+      
+      
+      
+      

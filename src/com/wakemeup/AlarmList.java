@@ -54,6 +54,7 @@ public class AlarmList extends CustomWindow {
 	private static int REQUEST_CODE_CUSTOM=1;
 	private static int REQUEST_CODE_MATH=1;
 	private ArrayList<String>daysSelected=new ArrayList<String>();
+	private int glob_alarmID;
 	
 	
 	@Override
@@ -245,8 +246,9 @@ public class AlarmList extends CustomWindow {
 				case 2:
 					Intent in=new Intent();
 					in.setClass(AlarmList.this, QuestionForm.class);
-					int alarmID=(int)System.currentTimeMillis();
-					in.putExtra("alarmID", alarmID); 
+					//int alarmID=(int)System.currentTimeMillis();
+					glob_alarmID=(int)System.currentTimeMillis();
+					in.putExtra("alarmID", glob_alarmID); 
 					startActivityForResult(in, REQUEST_CODE_CUSTOM);
 					
 					break;
@@ -343,7 +345,16 @@ public class AlarmList extends CustomWindow {
 		alarmTime.set(Calendar.SECOND, 0);
 		alarmTime.set(Calendar.DAY_OF_WEEK, getDay(day));
 		
-		int alarmID=(int)System.currentTimeMillis();
+		int alarmID=0;
+		if(optionSelected==2)
+		{
+			alarmID=glob_alarmID;
+		}
+		else
+		{
+			alarmID=(int)System.currentTimeMillis();
+		}
+		
 		
 		Intent intent=new Intent(this,AlarmRecieverActivity.class);
 		intent.putExtra("alarmID", alarmID);
@@ -416,6 +427,7 @@ public class AlarmList extends CustomWindow {
 	{
 		for(int i=0;i<daysSelected.size();i++)
 		{
+			Log.d("ALARMCALLER", daysSelected.get(i));
 			setAlarm(daysSelected.get(i));
 			alarmCount++;
 		}
@@ -425,9 +437,7 @@ public class AlarmList extends CustomWindow {
 		alarms.add(tempAlarm);
 		adapter.notifyDataSetChanged();
 		resetVariables();
-		//daysSelected.clear();
-		//alarmList.invalidateViews();
-		//alarmList.refreshDrawableState();
+
 		//TODO Call serialization code here
 	}
 	
