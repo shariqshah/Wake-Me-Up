@@ -6,9 +6,7 @@ import java.util.Random;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -81,7 +79,7 @@ public class CustomQuestion extends Activity {
 		Log.d("CQ","Value of ALARMID SENT : "+String.valueOf(alarmID));
 		ArrayList<QnA>quesAns =db.getAlarm(alarmID);
 		
-		//if(questionData!=null && questionData.moveToFirst())
+		
 		if(quesAns!=null)
 		{
 			for(int i=0;i<quesAns.size();i++)
