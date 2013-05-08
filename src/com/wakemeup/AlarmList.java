@@ -130,7 +130,7 @@ public class AlarmList extends CustomWindow {
 	
 	public void daysPickerDialog()
 	{
-		 
+		//resetVariables();
 		//daysSelected.clear();
 		if(daysSelected.isEmpty())
 		{
@@ -203,7 +203,7 @@ public class AlarmList extends CustomWindow {
 	public void alarmOptionsDialog()
 	{
 		AlertDialog.Builder builder=new Builder(this);
-		final CharSequence[] options={"None","Math Questions","Custom Questions"};
+		final CharSequence[] options={"Simple Alarm","With Math Questions","With Custom Questions"};
 		
 		
 		builder.setTitle("Extra Options");
@@ -212,15 +212,15 @@ public class AlarmList extends CustomWindow {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				
-				if(options[which].equals("None"))
+				if(options[which].equals("Simple Alarm"))
 				{
 					optionSelected=0;
 				}
-				else if(options[which].equals("Math Questions"))
+				else if(options[which].equals("With Math Questions"))
 				{
 					optionSelected=1;
 				}
-				else if(options[which].equals("Custom Questions"))
+				else if(options[which].equals("With Custom Questions"))
 				{
 					optionSelected=2;
 				}
@@ -237,11 +237,11 @@ public class AlarmList extends CustomWindow {
 				{
 				case 0:
 					//Set Normal Alarm.
-					setAlarmCaller();
+					setAlarmCaller(daysSelected);
 					break;
 				case 1:
 					//Set Alarm with Math question Option.
-					setAlarmCaller();
+					setAlarmCaller(daysSelected);
 					break;
 				case 2:
 					Intent in=new Intent();
@@ -344,7 +344,6 @@ public class AlarmList extends CustomWindow {
 		alarmTime.set(Calendar.MINUTE, alarmMinute);
 		alarmTime.set(Calendar.SECOND, 0);
 		alarmTime.set(Calendar.DAY_OF_WEEK, getDay(day));
-		
 		int alarmID=0;
 		if(optionSelected==2)
 		{
@@ -417,23 +416,24 @@ public class AlarmList extends CustomWindow {
 				break;
 			case 1:
 				Toast.makeText(getApplicationContext(), "Alarm set!", Toast.LENGTH_SHORT).show();
-				setAlarmCaller();
+				setAlarmCaller(daysSelected);
 				break;
 			};
 		}
 	}
 	
-	void setAlarmCaller()
+	void setAlarmCaller(ArrayList<String>SelectedDays)
 	{
-		for(int i=0;i<daysSelected.size();i++)
+		final ArrayList<String>weekDays=SelectedDays;
+		for(int i=0;i<weekDays.size();i++)
 		{
-			Log.d("ALARMCALLER", daysSelected.get(i));
-			setAlarm(daysSelected.get(i));
+			Log.d("ALARMCALLER", weekDays.get(i));
+			setAlarm(weekDays.get(i));
 			alarmCount++;
 		}
 		
 		Alarm tempAlarm=new Alarm();
-		tempAlarm.setAlarm(alarmHour, alarmMinute, daysSelected,true);
+		tempAlarm.setAlarm(alarmHour, alarmMinute, weekDays,true);
 		alarms.add(tempAlarm);
 		adapter.notifyDataSetChanged();
 		resetVariables();
